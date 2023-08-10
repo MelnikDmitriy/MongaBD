@@ -1,14 +1,14 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    isСompleted: {
-        type: Boolean,
-        default: false
-    }
-})
+  title: {
+    type: String,
+    required: true,
+  },
+  isChecked: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-module.exports = model('task', schema)
+module.exports = model('task', schema);

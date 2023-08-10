@@ -1,21 +1,21 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const {PORT, DB} = require('./config')
-const routes = require('./src/routes/tasks-routing')
+const express = require('express');
+const mongoose = require('mongoose');
+const { PORT, DB } = require('./config');
+const routes = require('./src/routes/tasks-routing');
 
-const app = express()
+const app = express();
 
-app.use('/', routes)
+app.use('/', routes);
 
 const start = async () => {
-    try {
-        await mongoose.connect(DB, {})
-        app.listen(PORT, () => {
-            console.log('Server has been started...')
-        })
-    } catch (e) {   
-        console.log(e)
-    }
-}
+  try {
+    await mongoose.connect(DB, {});
+    app.listen(PORT, () => {
+      console.log('Server has been started...');
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-start()
+start();
