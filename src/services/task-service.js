@@ -1,26 +1,40 @@
-const Task = require('../models/tasks')
+const Task = require('../models/tasks');
 
 const getTasks = async () => {
-    const tasks = Task.find();
+  const tasks = Task.find();
 
-    return tasks
-}
+  return tasks;
+};
 
-const createTask = async ( title ) => {
-    const newTask = new Task({ title })
-    const saveTask = await newTask.save()
+const createTask = async (title) => {
+  const newTask = new Task({ title });
+  const saveTask = await newTask.save();
 
-    return saveTask
-}
+  return saveTask;
+};
 
 const deleteTask = async (id) => {
-    const deletedTask = await Task.findOneAndDelete({_id: id})
+  const deletedTask = await Task.findOneAndDelete({ _id: id });
 
-    return deletedTask
-}
+  return deletedTask;
+};
+
+const editTask = async (id, newTitle) => {
+  const updateTask = await Task.findByIdAndUpdate(id, { title: newTitle });
+
+  return updateTask;
+};
+
+const changeCheckbox = async (id, statusCheckbox) => {
+  const changeChecboxTask = await Task.findByIdAndUpdate(id, { isChecked: statusCheckbox, });
+
+  return changeChecboxTask;
+};
 
 module.exports = {
-    getTasks,
-    createTask,
-    deleteTask
-}
+  getTasks,
+  createTask,
+  deleteTask,
+  editTask,
+  changeCheckbox,
+};
