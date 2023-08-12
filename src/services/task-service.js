@@ -20,13 +20,21 @@ const deleteTask = async (id) => {
 };
 
 const editTask = async (id, newTitle) => {
-  const updateTask = await Task.findByIdAndUpdate(id, { title: newTitle });
+  const updateTask = await Task.findByIdAndUpdate(
+    id,
+    { title: newTitle },
+    { new: true }
+  );
 
   return updateTask;
 };
 
 const changeCheckbox = async (id, statusCheckbox) => {
-  const changeChecboxTask = await Task.findByIdAndUpdate(id, { isChecked: statusCheckbox, });
+  const changeChecboxTask = await Task.findByIdAndUpdate(
+    id,
+    { isChecked: statusCheckbox },
+    { new: true }
+  );
 
   return changeChecboxTask;
 };
